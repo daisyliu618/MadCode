@@ -1,0 +1,13 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+apply from: "../../basic.gradle"
+
+dependencies {
+    implementation Libs.okhttp
+    implementation Libs.okhttp_logging
+    implementation Libs.retrofit
+    implementation Libs.retrofit_gson
+}
