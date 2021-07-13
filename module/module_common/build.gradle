@@ -5,3 +5,7 @@ plugins {
 
 apply from: "../../basic.gradle"
 
+dependencies {
+    api Libs.appcompat
+}
+

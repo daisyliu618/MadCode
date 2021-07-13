@@ -6,4 +6,5 @@ plugins {
 apply from: "../../basic.gradle"
 
 dependencies {
+    implementation Libs.logan
 }

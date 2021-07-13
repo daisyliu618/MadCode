@@ -23,6 +23,9 @@ object Versions {
 
     const val okhttp_version = "4.9.1"
     const val retrofit_version = "2.9.0"
+
+    const val logan_version = "1.2.4"
+
 }
 
 object Libs {
@@ -41,5 +44,8 @@ object Libs {
     const val okhttp_logging = "com.squareup.okhttp3:okhttp:${Versions.okhttp_version}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit_version}"
     const val retrofit_gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit_version}"
+
+    //log日志库, https://github.com/Meituan-Dianping/Logan 前后台完整的解决方案
+    const val logan =  "com.dianping.android.sdk:logan:${Versions.logan_version}"
 
 }

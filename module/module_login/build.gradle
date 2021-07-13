@@ -6,3 +6,8 @@ if (isModule.toBoolean()) {
 apply plugin: 'kotlin-android'
 
 apply from: "../../basic.gradle"
+
+dependencies {
+
+    api project(path: ':module:module_common')
+}
