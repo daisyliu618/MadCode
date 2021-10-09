@@ -7,4 +7,5 @@ apply from: "../../basic.gradle"
 
 dependencies {
     implementation Libs.logan
+    implementation 'com.elvishew:xlog:1.10.1'
 }
