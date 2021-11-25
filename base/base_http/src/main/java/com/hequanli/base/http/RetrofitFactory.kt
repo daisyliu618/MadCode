@@ -2,14 +2,18 @@ package com.hequanli.base.http
 
 import com.hequanli.base.http.converter.gson.GsonConverterFactory
 import com.hequanli.base.http.interceptor.CommonInterceptor
+import com.hequanli.base.http.interceptor.LoggingInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import java.util.concurrent.TimeUnit
 
 /**
  * @author HQL
  * Created on 2021/6/22
  * Desc:
+ * https://stackoverflow.com/questions/58523119/exception-handling-of-network-errors-retrofit
+ * 封装https://yuanjunli.github.io/2016/11/26/rxjava+retrofit+OkHttp%E5%B0%81%E8%A3%85/
  */
 
 class RetrofitFactory private constructor() {
@@ -21,18 +25,20 @@ class RetrofitFactory private constructor() {
 
     init {
 
-        val okhttp = OkHttpClient().newBuilder()
-            .connectTimeout(defaultTimeout, TimeUnit.SECONDS)
-            .readTimeout(defaultReadTimeout, TimeUnit.SECONDS)
-            .writeTimeout(defaultWriteTimeout, TimeUnit.SECONDS)
-            .addInterceptor(CommonInterceptor())
-            .build()
+        val okhttp = OkHttpClient().newBuilder().apply {
+            connectTimeout(defaultTimeout, TimeUnit.SECONDS)
+            readTimeout(defaultReadTimeout, TimeUnit.SECONDS)
+            writeTimeout(defaultWriteTimeout, TimeUnit.SECONDS)
+            addInterceptor(LoggingInterceptor.Builder().build())
+            addInterceptor(CommonInterceptor())
+        }.build()
 
-        retrofit = Retrofit.Builder()
-            .baseUrl("https://www.wanandroid.com")
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(okhttp)
-            .build()
+        retrofit = Retrofit.Builder().apply {
+            baseUrl("https://www.wanandroid.com")
+            addConverterFactory(GsonConverterFactory.create())
+            addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+            client(okhttp)
+        }.build()
     }
 
     companion object {

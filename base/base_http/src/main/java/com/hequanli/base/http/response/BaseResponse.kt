@@ -6,4 +6,4 @@ package com.hequanli.base.http.response
  * Desc:
  */
 
-open class BaseResponse<T>(var data: T, var code: Int = -1, var msg: String = "")
+open class BaseResponse<T>(var data: T, var errorCode: Int = -1, var errorMsg: String = "")

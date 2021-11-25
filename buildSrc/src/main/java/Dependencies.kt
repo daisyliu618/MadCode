@@ -27,12 +27,20 @@ object Versions {
 
     const val logan_version = "1.2.4"
 
+    const val rxjava_version = "3.1.2"
+    const val rxjava_adapter_version = "2.9.0"
+    const val rxandroid_version = "3.0.0"
 }
 
 object Libs {
     //Kotlin
     const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin_version}"
     const val core_ktx = "androidx.core:core-ktx:${Versions.core_ktx_version}"
+
+    //RxXXX
+    const val rxjava = "io.reactivex.rxjava3:rxjava:${Versions.rxjava_version}"
+    const val rxjava_adapter = "com.squareup.retrofit2:adapter-rxjava3:${Versions.rxjava_adapter_version}"
+    const val rxandroid = "io.reactivex.rxjava3:rxandroid:${Versions.rxandroid_version}"
 
     //UI
     const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat_version}"
@@ -42,13 +50,9 @@ object Libs {
 
     //HTTP
     const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp_version}"
-    const val okhttp_logging = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp_version}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit_version}"
     const val gson = "com.google.code.gson:gson:${Versions.gson_version}"
 
     //log日志库, https://github.com/Meituan-Dianping/Logan 前后台完整的解决方案
     const val logan =  "com.dianping.android.sdk:logan:${Versions.logan_version}"
-
-
-
 }
