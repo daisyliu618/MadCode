@@ -1,7 +1,3 @@
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-
 android {
     // 指定用于编译项目的 API 级别
     compileSdkVersion Versions.compileSdkVersion
@@ -24,10 +20,6 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
-    }
-
-    buildFeatures {
-        viewBinding true
     }
 
     lintOptions {

@@ -1,7 +1,7 @@
 package com.hequanli.base.repository
 
 import com.hequanli.base.http.RetrofitFactory
-import com.hequanli.base.http.response.BaseResponse
+import com.hequanli.base.http.utils.RxUtils
 import com.hequanli.base.repository.home.HomeService
 import io.reactivex.rxjava3.core.Observable
 
@@ -12,6 +12,7 @@ import io.reactivex.rxjava3.core.Observable
  */
 
 class RemoteRepository {
+
     private val homeService: HomeService = RetrofitFactory.instance.create(HomeService::class.java)
 
     companion object {
@@ -20,8 +21,9 @@ class RemoteRepository {
         }
     }
 
-    fun getHomeArticleList(): Observable<BaseResponse<String>> {
+    fun getHomeArticleList(): Observable<String> {
         return homeService.getHomeArticleList()
+            .map(BaseResponseRxMapper())
+            .compose(RxUtils.ioToMain())
     }
-
 }

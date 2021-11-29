@@ -12,8 +12,6 @@ import java.util.concurrent.TimeUnit
  * @author HQL
  * Created on 2021/6/22
  * Desc:
- * https://stackoverflow.com/questions/58523119/exception-handling-of-network-errors-retrofit
- * 封装https://yuanjunli.github.io/2016/11/26/rxjava+retrofit+OkHttp%E5%B0%81%E8%A3%85/
  */
 
 class RetrofitFactory private constructor() {

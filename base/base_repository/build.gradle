@@ -7,6 +7,5 @@ apply from: "../../basic.gradle"
 
 dependencies {
     api project(path: ':base:base_http')
-    api Libs.rxandroid
-    api Libs.rxjava
+    api Libs.rxjava3
 }

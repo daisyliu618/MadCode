@@ -6,8 +6,10 @@ plugins {
 apply from: "../../basic.gradle"
 
 dependencies {
-    implementation Libs.okhttp
     api Libs.retrofit
     api Libs.rxjava_adapter
+    api Libs.kotlin_coroutines
+    api Libs.rxandroid
+    implementation Libs.okhttp
     implementation Libs.gson
 }

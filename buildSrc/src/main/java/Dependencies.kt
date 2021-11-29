@@ -2,6 +2,10 @@
  * @author HQL
  * Created on 2021/5/11
  * Desc:
+ * 版本依赖查询：
+ * google: https://developer.android.google.cn/jetpack/androidx/versions
+ * maven:https://mvnrepository.com/
+ *
  */
 
 object Versions {
@@ -15,10 +19,11 @@ object Versions {
     const val versionName = "1.0"
 
     const val gradle_version = "7.0.2"
-    const val appcompat_version = "1.2.0"
-    const val kotlin_version = "1.5.20"
+    const val appcompat_version = "1.4.0"
+    const val kotlin_version = "1.6.0"
+    const val kotlin_coroutines_version = "1.6.0-RC"
     const val core_ktx_version = "1.3.1"
-    const val material_version = "1.2.1"
+    const val material_version = "1.4.0"
     const val constraint_layout_version = "2.0.1"
 
     const val okhttp_version = "4.9.2"
@@ -27,7 +32,7 @@ object Versions {
 
     const val logan_version = "1.2.4"
 
-    const val rxjava_version = "3.1.2"
+    const val rxjava3_version = "3.1.2"
     const val rxjava_adapter_version = "2.9.0"
     const val rxandroid_version = "3.0.0"
 }
@@ -35,11 +40,14 @@ object Versions {
 object Libs {
     //Kotlin
     const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin_version}"
+    const val kotlin_coroutines =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlin_coroutines_version}"
     const val core_ktx = "androidx.core:core-ktx:${Versions.core_ktx_version}"
 
     //RxXXX
-    const val rxjava = "io.reactivex.rxjava3:rxjava:${Versions.rxjava_version}"
-    const val rxjava_adapter = "com.squareup.retrofit2:adapter-rxjava3:${Versions.rxjava_adapter_version}"
+    const val rxjava3 = "io.reactivex.rxjava3:rxjava:${Versions.rxjava3_version}"
+    const val rxjava_adapter =
+        "com.squareup.retrofit2:adapter-rxjava3:${Versions.rxjava_adapter_version}"
     const val rxandroid = "io.reactivex.rxjava3:rxandroid:${Versions.rxandroid_version}"
 
     //UI
@@ -54,5 +62,5 @@ object Libs {
     const val gson = "com.google.code.gson:gson:${Versions.gson_version}"
 
     //log日志库, https://github.com/Meituan-Dianping/Logan 前后台完整的解决方案
-    const val logan =  "com.dianping.android.sdk:logan:${Versions.logan_version}"
+    const val logan = "com.dianping.android.sdk:logan:${Versions.logan_version}"
 }

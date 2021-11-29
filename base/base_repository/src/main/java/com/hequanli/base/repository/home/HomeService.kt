@@ -11,6 +11,7 @@ import retrofit2.http.GET
  */
 
 interface HomeService {
+
     @GET("article/list/0/json")
     fun getHomeArticleList(): Observable<BaseResponse<String>>
 
