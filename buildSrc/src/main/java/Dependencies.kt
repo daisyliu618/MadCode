@@ -35,6 +35,8 @@ object Versions {
     const val rxjava3_version = "3.1.2"
     const val rxjava_adapter_version = "2.9.0"
     const val rxandroid_version = "3.0.0"
+    const val livedata_version = "2.4.0"
+    const val viewmodel_version = "2.4.0"
 }
 
 object Libs {
@@ -63,4 +65,8 @@ object Libs {
 
     //log日志库, https://github.com/Meituan-Dianping/Logan 前后台完整的解决方案
     const val logan = "com.dianping.android.sdk:logan:${Versions.logan_version}"
+
+    //JetPack
+    const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.livedata_version}"
+    const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewmodel_version}"
 }
