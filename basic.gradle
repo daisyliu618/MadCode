@@ -37,6 +37,21 @@ android {
             }
         }
     }
+
+    buildTypes {
+        release {
+
+        }
+        debug {
+            minifyEnabled true
+            plugins.withId('com.android.application') {
+                shrinkResources true
+            }
+            zipAlignEnabled true
+            debuggable true
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
 }
 
 dependencies {
