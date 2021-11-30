@@ -10,6 +10,7 @@ dependencies {
     api Libs.rxjava_adapter
     api Libs.kotlin_coroutines
     api Libs.rxandroid
+    implementation Libs.annotation
     implementation Libs.okhttp
     implementation Libs.gson
 }

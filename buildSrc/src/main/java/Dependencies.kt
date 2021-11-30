@@ -12,9 +12,9 @@ object Versions {
 
     const val applicationId = "com.hequanli.madcode"
 
-    const val compileSdkVersion = 30
+    const val compileSdkVersion = 31
     const val minSdkVersion = 21
-    const val targetSdkVersion = 30
+    const val targetSdkVersion = 31
     const val versionCode = 1
     const val versionName = "1.0"
 
@@ -37,6 +37,8 @@ object Versions {
     const val rxandroid_version = "3.0.0"
     const val livedata_version = "2.4.0"
     const val viewmodel_version = "2.4.0"
+
+    const val annotation_version = "1.3.0"
 }
 
 object Libs {
@@ -69,4 +71,6 @@ object Libs {
     //JetPack
     const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.livedata_version}"
     const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewmodel_version}"
+
+    const val annotation ="androidx.annotation:annotation:${Versions.annotation_version}"
 }
