@@ -2,6 +2,25 @@
 Android现代开发指南（Modern Android Development ）简称(MAD)。
 旨在通过搭建可复用的架构模式，实现代码复用解耦架构清晰。
 
+# base_http(网络库)
+ ## 依赖项：
+    - Retrofit
+    - OkHttp
+    - Gson
+    - RxJava Adapter 提供RxJava3CallAdapterFactory
+    - RxAndroid 提供AndroidSchedulers
+    - Coroutines
+    - Annotation
+ ## 自我实现
+    - GsonConverterFactory
+    - LoggingInterceptor
+    - 异常处理（待实现）
+    - 支持协程方式（待实现）
+    - 多baseurl（待实现）
+
+
+
+
 ## 日志库
 主要打印应用调试的一些日志，也可以将日志上传到指定服务器。
 ### 日志功能

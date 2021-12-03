@@ -1,6 +1,7 @@
 package com.hequanli.madcode.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.hequanli.base.repository.RemoteRepository
 
 /**
  * @author HQL
@@ -9,4 +10,11 @@ import androidx.lifecycle.ViewModel
  */
 class TestViewModel : ViewModel() {
 
+
+
+    fun getHomeArticleList() {
+        RemoteRepository.me.getHomeArticleList().subscribe {
+
+        }
+    }
 }
