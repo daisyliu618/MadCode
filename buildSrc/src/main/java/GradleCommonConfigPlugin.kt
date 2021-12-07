@@ -1,5 +1,3 @@
-import Testing.androidTestImplementation
-import Testing.testImplementation
 import com.android.build.gradle.*
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
@@ -7,6 +5,41 @@ import org.gradle.api.Project
 import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.gradle.api.plugins.PluginContainer
 import org.gradle.kotlin.dsl.getByType
+
+/*
+plugins {
+    id 'com.android.library' //这个在subprojects单独处理
+    id 'kotlin-android'
+}
+android {
+    compileSdk 31
+    defaultConfig {
+        minSdk 21
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+}
+dependencies {
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    implementation 'androidx.core:core-ktx:1.3.2'
+}
+*/
 
 /**
  * @author HQL
@@ -30,7 +63,7 @@ class GradleCommonConfigPlugin : Plugin<Project> {
                     //公共 android 配置项
                     project.extensions.getByType<AppExtension>().applyAppCommons(project)
                     //公共依赖
-                    project.configAppDependencies()
+                    project.commonFileTree()
                 }
                 //com.android.library
                 is LibraryPlugin -> {
@@ -39,53 +72,44 @@ class GradleCommonConfigPlugin : Plugin<Project> {
                     //公共 android 配置项
                     project.extensions.getByType<LibraryExtension>().applyLibraryCommons(project)
                     //公共依赖
-                    project.configLibraryDependencies()
+                    project.commonFileTree()
                 }
             }
         }
     }
 
     /**
-     * library Module 公共依赖
+     * 公共依赖
      */
-    private fun Project.configLibraryDependencies() {
+    private fun Project.commonFileTree() {
         dependencies.apply {
-            add(api, fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-            configTestDependencies()
+            add(
+                "implementation",
+                fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar")))
+            )
+            //add(implementation, (project(":baselib")))
+            commonDependencies()
         }
     }
 
-    /**
-     * app Module 公共依赖
-     */
-    private fun Project.configAppDependencies() {
-        dependencies.apply {
-            add(implementation, fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-            configTestDependencies()
-        }
+    private fun DependencyHandler.commonDependencies() {
+        add("implementation", "androidx.core:core-ktx:${Versions.core_ktx_version}")
     }
 
     /**
-     * test 依赖配置
-     */
-    private fun DependencyHandler.configTestDependencies() {
-        testImplementation(Testing.testLibraries)
-        androidTestImplementation(Testing.androidTestLibraries)
-    }
-
-    /**
-     * kotlin 插件
+     * 公共插件配置
      */
     private fun Project.configCommonPlugin() {
         plugins.apply("kotlin-android")
-        plugins.apply("kotlin-parcelize")
     }
 
     /**
      * app Module 配置项，此处固定了 applicationId
      */
     private fun AppExtension.applyAppCommons(project: Project) {
-        defaultConfig { applicationId = BuildConfig.applicationId }
+        defaultConfig {
+            applicationId = Versions.applicationId
+        }
         applyBaseCommons(project)
     }
 
@@ -94,29 +118,20 @@ class GradleCommonConfigPlugin : Plugin<Project> {
      */
     private fun LibraryExtension.applyLibraryCommons(project: Project) {
         applyBaseCommons(project)
-        /*      onVariants.withBuildType("debug") {
-                  androidTest {
-                      enabled = false
-                  }
-              }*/
     }
 
     private fun BaseExtension.applyBaseCommons(project: Project) {
-        compileSdkVersion(BuildConfig.compileSdkVersion)
+        compileSdkVersion(Versions.compileSdkVersion)
 
         defaultConfig {
-            minSdk = BuildConfig.minSdkVersion
-            targetSdk = BuildConfig.targetSdkVersion
-            versionCode = BuildConfig.versionCode
-            versionName = BuildConfig.versionName
-            testInstrumentationRunner = BuildConfig.runner
+            minSdk = Versions.minSdkVersion
+            targetSdk = Versions.targetSdkVersion
+            versionCode = Versions.versionCode
+            versionName = Versions.versionName
         }
         compileOptions {
             sourceCompatibility = JavaVersion.VERSION_11
             targetCompatibility = JavaVersion.VERSION_11
         }
-
-        buildFeatures.viewBinding = true
     }
-
 }

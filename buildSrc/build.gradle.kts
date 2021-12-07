@@ -21,7 +21,6 @@ repositories {
 dependencies {
     implementation(gradleApi())
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.0")
-    // Android gradle plugin will allow us to access Android specific features
     implementation("com.android.tools.build:gradle:7.0.2")
 }
 
