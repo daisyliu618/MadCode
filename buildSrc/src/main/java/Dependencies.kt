@@ -18,7 +18,7 @@ object Versions {
     const val versionCode = 1
     const val versionName = "1.0"
 
-    const val gradle_version = "7.0.2"
+    const val gradle_version = "7.0.3"
     const val appcompat_version = "1.4.0"
     const val kotlin_version = "1.6.0"
     const val kotlin_coroutines_version = "1.6.0-RC"

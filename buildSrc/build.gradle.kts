@@ -21,7 +21,7 @@ repositories {
 dependencies {
     implementation(gradleApi())
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.0")
-    implementation("com.android.tools.build:gradle:7.0.2")
+    implementation("com.android.tools.build:gradle:7.0.3")
 }
 
 
