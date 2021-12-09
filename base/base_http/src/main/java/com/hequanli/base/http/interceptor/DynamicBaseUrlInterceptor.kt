@@ -31,10 +31,10 @@ class DynamicBaseUrlInterceptor : Interceptor {
             builder.removeHeader(domainName)
             //匹配获得新的BaseUrl
             var newBaseUrl = when (headerValues[0]) {
-                HttpConstant.BASE_DOMAIN -> {
+                HttpConstant.BASE -> {
                     HttpConstant.BASE_URL.toHttpUrlOrNull()
                 }
-                HttpConstant.FAT_DOMAIN -> {
+                HttpConstant.FAT -> {
                     HttpConstant.FAT_URL.toHttpUrlOrNull()
                 }
                 else -> {

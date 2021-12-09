@@ -15,4 +15,7 @@ object HttpConstant {
     const val BASE_DOMAIN = "Domain-Name: BASE"
     const val FAT_DOMAIN = "Domain-Name: FAT"
 
+    const val BASE = "BASE"
+    const val FAT = "FAT"
+
 }
