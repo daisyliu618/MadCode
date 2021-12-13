@@ -13,7 +13,8 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 object RxUtils {
     fun <T> ioToMain(): ObservableTransformer<T, T> {
         return ObservableTransformer<T, T> { upstream ->
-            upstream.subscribeOn(Schedulers.io())
+            upstream
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         }
     }
