@@ -1,17 +1,6 @@
 plugins {
-    `kotlin-dsl`
     `java-gradle-plugin`
-}
-
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0")
-        classpath("com.android.tools.build:gradle:7.0.2")
-    }
+    `kotlin-dsl`
 }
 
 repositories {
@@ -20,11 +9,10 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.0")
-    // Android gradle plugin will allow us to access Android specific features
-    implementation("com.android.tools.build:gradle:7.0.2")
+    implementation(gradleApi())
+    implementation("com.android.tools.build:gradle:7.0.3")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0")
 }
-
 
 gradlePlugin {
     plugins {

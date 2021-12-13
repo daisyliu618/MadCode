@@ -1,5 +1,6 @@
-package com.hequanli.base.repository
+package com.hequanli.base.http.mapper
 
+import com.hequanli.base.http.exception.ServerException
 import com.hequanli.base.http.response.BaseResponse
 import io.reactivex.rxjava3.functions.Function
 
@@ -15,6 +16,6 @@ class BaseResponseRxMapper<T> : Function<BaseResponse<T>, T> {
         if (t.isSuccess()) {
             return t.data
         }
-        throw RuntimeException()
+        throw ServerException(t.errorMsg, t.errorCode)
     }
 }

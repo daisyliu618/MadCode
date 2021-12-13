@@ -2,7 +2,9 @@ package com.hequanli.base.http
 
 import com.hequanli.base.http.converter.gson.GsonConverterFactory
 import com.hequanli.base.http.interceptor.CommonInterceptor
+import com.hequanli.base.http.interceptor.DynamicBaseUrlInterceptor
 import com.hequanli.base.http.interceptor.LoggingInterceptor
+import com.hequanli.base.http.utils.HttpConstant
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
@@ -27,12 +29,13 @@ class RetrofitFactory private constructor() {
             connectTimeout(defaultTimeout, TimeUnit.SECONDS)
             readTimeout(defaultReadTimeout, TimeUnit.SECONDS)
             writeTimeout(defaultWriteTimeout, TimeUnit.SECONDS)
+            addInterceptor(DynamicBaseUrlInterceptor())
             addInterceptor(LoggingInterceptor.Builder().build())
             addInterceptor(CommonInterceptor())
         }.build()
 
         retrofit = Retrofit.Builder().apply {
-            baseUrl("https://www.wanandroid.com")
+            baseUrl(HttpConstant.BASE_URL)
             addConverterFactory(GsonConverterFactory.create())
             addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             client(okhttp)

@@ -1,11 +1,10 @@
 package com.hequanli.madcode
 
 import android.os.Bundle
-import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
+import com.hequanli.base.http.mapper.BaseObserver
 import com.hequanli.base.repository.RemoteRepository
-import io.reactivex.rxjava3.observers.DisposableObserver
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,17 +12,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         RemoteRepository.me.getHomeArticleList()
-            .subscribeWith(object : DisposableObserver<String>() {
-                override fun onNext(t: String?) {
-                    Log.d("XXX", "onNext")
+            .subscribeWith(object : BaseObserver<String>() {
+                override fun succeed(t: String) {
                 }
 
-                override fun onError(e: Throwable?) {
-                    Log.d("XXX", "onError")
-                }
-
-                override fun onComplete() {
-                    Log.d("XXX", "onComplete")
+                override fun error(msg: String?, code: Int?) {
+                    Toast.makeText(this@MainActivity, msg + code, Toast.LENGTH_LONG).show()
                 }
             })
     }
