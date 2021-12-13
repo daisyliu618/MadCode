@@ -1,6 +1,7 @@
 package com.hequanli.madcode.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.hequanli.base.http.mapper.BaseObserver
 import com.hequanli.base.repository.RemoteRepository
 
 /**
@@ -11,10 +12,14 @@ import com.hequanli.base.repository.RemoteRepository
 class TestViewModel : ViewModel() {
 
 
-
     fun getHomeArticleList() {
-        RemoteRepository.me.getHomeArticleList().subscribe {
+        RemoteRepository.me.getHomeArticleList()
+            .subscribe(object : BaseObserver<String>() {
+                override fun succeed(t: String) {
+                }
 
-        }
+                override fun error(msg: String?, code: Int?) {
+                }
+            })
     }
 }
