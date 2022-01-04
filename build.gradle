@@ -31,3 +31,5 @@ subprojects {
         apply plugin: 'com.android.library'
     }
 }
+
+apply from: file('gradle/projectDependencyGraph.gradle')
